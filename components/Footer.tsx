@@ -1,0 +1,50 @@
+import React from 'react';
+import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
+import { EMAIL, SOCIALS } from '../constants';
+
+interface FooterProps {
+  borderClass: string;
+  mutedText: string;
+  isDark: boolean;
+}
+
+const Footer: React.FC<FooterProps> = ({ borderClass, mutedText, isDark }) => {
+  return (
+    <footer id="contact" className={`border-t ${borderClass} mt-auto`}>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className={`p-8 md:p-12 border-b md:border-b-0 md:border-r ${borderClass}`}>
+                 <h3 className="font-serif italic text-2xl mb-4">Let&apos;s build something
+exceptional together.
+</h3>
+                 <a href={`mailto:${EMAIL}`} className="text-xl md:text-2xl hover:underline decoration-purple-500 underline-offset-4 transition-all">
+                    {EMAIL}
+                 </a>
+            </div>
+            <div className="p-8 md:p-12 flex flex-col justify-between">
+                <div className="grid grid-cols-2 gap-4">
+                    {SOCIALS.map((social) => (
+                        <a 
+                            key={social.name} 
+                            href={social.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`flex items-center gap-3 p-3 border ${isDark ? 'border-neutral-800 hover:bg-neutral-800' : 'border-neutral-300 hover:bg-neutral-200'} transition-colors group`}
+                        >
+                            {social.name === 'GitHub' && <Github size={18} />}
+                            {social.name === 'LinkedIn' && <Linkedin size={18} />}
+                            {social.name === 'Email' && <Mail size={18} />}
+                            {social.name === 'Portfolio' && <ArrowUpRight size={18} />}
+                            <span className="text-sm font-medium">{social.name}</span>
+                        </a>
+                    ))}
+                </div>
+                <div className={`mt-8 text-right text-xs font-mono ${mutedText}`}>
+                    &copy; 2025 ATHARVA RAJ SINGH THAKUR
+                </div>
+            </div>
+        </div>
+    </footer>
+  );
+};
+
+export default Footer;
