@@ -1,5 +1,5 @@
 import React from 'react';
-import { Project, Experience, Social, SkillCategory, BlogPost } from './types';
+import { Project, Experience, Social, SkillCategory, BlogPost, PlaygroundItem } from './types';
 
 export const EMAIL = "atharvaraj@gmail.com";
 export const PHONE = "+91 7471134354";
@@ -740,4 +740,69 @@ export const BLOG_POSTS: BlogPost[] = [
             </>
         )
     }
+];
+
+export const PLAYGROUND_ITEMS: PlaygroundItem[] = [
+  {
+    id: "1",
+    title: "Neon Cyberpunk City",
+    description: "A 3D interactive city built with Three.js and React Three Fiber.",
+    imageUrl: "/mock/1.jpg",
+    demoUrl: "https://example.com/cyberpunk",
+    techStack: ["Three.js", "R3F", "GLSL"],
+    longDescription: "An immersive exploration of a futuristic cityscape, rendered in real-time using WebGL. This experiment pushes the boundaries of browser-based 3D graphics, featuring dynamic lighting, procedural generation, and post-processing effects that create a dense, atmospheric environment.",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    images: ["/mock/2.jpg", "/mock/3.jpg", "/mock/4.jpg"]
+  },
+  {
+    id: "2",
+    title: "Liquid Distortion Slider",
+    description: "WebGL based image slider with liquid distortion effects using OGL.",
+    imageUrl: "/mock/5.jpg",
+    demoUrl: "https://example.com/liquid",
+    techStack: ["OGL", "GSAP", "WebGL"],
+    longDescription: "A study in fluid dynamics and image manipulation. This slider uses custom shaders to create a liquid-like distortion effect during transitions, giving the interface a tactile, organic feel that responds to user interaction.",
+    images: ["/mock/6.jpg", "/mock/7.jpg", "/mock/8.jpg"]
+  },
+  {
+    id: "3",
+    title: "Kinetic Typography",
+    description: "Interactive typography experiments using variable fonts and matter.js.",
+    imageUrl: "/mock/3.jpg",
+    demoUrl: "https://example.com/typography",
+    techStack: ["Matter.js", "Canvas", "GSAP"],
+    longDescription: "Breaking the grid with physics-based typography. This experiment combines variable fonts with a 2D physics engine to create text that falls, collides, and reacts to gravity and mouse inputs, turning reading into a playful experience.",
+    images: ["/mock/1.jpg", "/mock/2.jpg", "/mock/4.jpg"]
+  },
+  {
+    id: "4",
+    title: "Particle Morphing",
+    description: "GPU accelerated particle system that morphs between 3D models.",
+    imageUrl: "/mock/7.jpg",
+    demoUrl: "https://example.com/particles",
+    techStack: ["Three.js", "GPGPU", "Shaders"],
+    longDescription: "A performance-focused particle system capable of rendering thousands of points. The particles seamlessly morph between different 3D shapes, driven by GPGPU computations for smooth, high-frame-rate animations.",
+    images: ["/mock/5.jpg", "/mock/6.jpg", "/mock/8.jpg"]
+  }
+  ,
+  {
+    id: "5",
+    title: "Abstract Data Viz",
+    description: "Generative art and data visualization using D3.js and Canvas.",
+    imageUrl: "/mock/2.jpg",
+    demoUrl: "https://example.com/dataviz",
+    techStack: ["D3.js", "Canvas", "Math"],
+    longDescription: "Transforming raw data into visual poetry. This experiment explores the intersection of mathematics and art, using algorithms to generate complex, organic patterns from structured datasets.",
+    images: ["/mock/1.jpg", "/mock/3.jpg", "/mock/5.jpg"]
+  },
+  {
+    id: "6",
+    title: "AR Product Viewer",
+    description: "WebXR based product viewer with real-time lighting estimation.",
+    imageUrl: "/mock/4.jpg",
+    demoUrl: "https://example.com/ar",
+    techStack: ["WebXR", "Three.js", "React"],
+    longDescription: "Bridging the digital and physical worlds. This WebXR experiment allows users to place virtual objects in their real-world environment, featuring realistic lighting and shadow estimation for true immersion.",
+    images: ["/mock/6.jpg", "/mock/7.jpg", "/mock/8.jpg"]
+  }
 ];

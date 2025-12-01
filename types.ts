@@ -77,6 +77,18 @@ export interface Social {
   label: string;
 }
 
+export interface PlaygroundItem {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  demoUrl: string;
+  techStack: string[];
+  images?: string[];
+  longDescription?: string;
+  videoUrl?: string;
+}
+
 export interface BlogPost {
   id: string;
   title: string;

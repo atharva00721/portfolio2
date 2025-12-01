@@ -13,8 +13,8 @@ const Profile: React.FC<ProfileProps> = ({ borderClass, mutedText, handleNav }) 
   return (
     <>
       {/* Profile Image */}
-      <div className={`p-6 md:p-8 border-b ${borderClass} flex justify-center bg-neutral-100/30 dark:bg-neutral-900/10`}>
-        <div className="w-full h-48 overflow-hidden border border-neutral-300 dark:border-neutral-700 grayscale hover:grayscale-0 transition-all duration-500 relative">
+      <div className={`border-b ${borderClass} flex justify-center bg-neutral-100/30 dark:bg-neutral-900/10`}>
+        <div className="w-full h-48 overflow-hidden  grayscale hover:grayscale-0 transition-all duration-500 relative">
           <NextImage 
             src="https://i.pinimg.com/1200x/cb/7d/e7/cb7de7eff8a5018aa0ca5a06082f3bda.jpg" 
             alt="Atharva Raj" 
