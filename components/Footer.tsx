@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
+import NextImage from 'next/image';
+import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
 import { EMAIL, SOCIALS } from '../constants';
 
 interface FooterProps {
@@ -16,9 +17,14 @@ const Footer: React.FC<FooterProps> = ({ borderClass, mutedText, isDark }) => {
                  <h3 className="font-serif italic text-2xl mb-4">Let&apos;s build something
 exceptional together.
 </h3>
-                 <a href={`mailto:${EMAIL}`} className="text-xl md:text-2xl hover:underline decoration-purple-500 underline-offset-4 transition-all">
-                    {EMAIL}
-                 </a>
+                 <div className="block w-48 md:w-64 relative h-16 md:h-20 opacity-80 hover:opacity-100 transition-opacity">
+                    <NextImage 
+                        src="/signature.png" 
+                        alt={EMAIL}
+                        fill
+                        className={`object-contain object-left ${isDark ? 'invert' : ''}`}
+                    />
+                 </div>
             </div>
             <div className="p-8 md:p-12 flex flex-col justify-between">
                 <div className="grid grid-cols-2 gap-4">
@@ -33,7 +39,7 @@ exceptional together.
                             {social.name === 'GitHub' && <Github size={18} />}
                             {social.name === 'LinkedIn' && <Linkedin size={18} />}
                             {social.name === 'Email' && <Mail size={18} />}
-                            {social.name === 'Portfolio' && <ArrowUpRight size={18} />}
+                            {social.name === 'Twitter' && <Twitter size={18} />}
                             <span className="text-sm font-medium">{social.name}</span>
                         </a>
                     ))}

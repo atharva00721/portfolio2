@@ -14,7 +14,7 @@ interface HomeProps {
   mutedText: string;
   isDark: boolean;
   handleProjectClick: (project: Project) => void;
-  handleNav: (view: 'projects') => void;
+  handleNav: (view: 'projects' | 'experience') => void;
 }
 
 const Home: React.FC<HomeProps> = ({ 
@@ -46,7 +46,7 @@ const Home: React.FC<HomeProps> = ({
 
                 {/* MOBILE ONLY: Profile Image & Experience */}
                 <div className="block lg:hidden">
-                    <Profile borderClass={borderClass} mutedText={mutedText} />
+                    <Profile borderClass={borderClass} mutedText={mutedText} handleNav={handleNav} />
                 </div>
 
                 {/* Featured Projects Grid */}
@@ -73,7 +73,7 @@ const Home: React.FC<HomeProps> = ({
                 
                 {/* DESKTOP ONLY: Profile Image & Experience */}
                 <div className="hidden lg:block">
-                    <Profile borderClass={borderClass} mutedText={mutedText} />
+                    <Profile borderClass={borderClass} mutedText={mutedText} handleNav={handleNav} />
                 </div>
 
                 {/* Skills Section */}

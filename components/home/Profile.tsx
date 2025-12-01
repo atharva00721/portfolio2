@@ -1,13 +1,15 @@
 import React from 'react';
 import NextImage from 'next/image';
+import { ArrowRight } from 'lucide-react';
 import { EXPERIENCE } from '../../constants';
 
 interface ProfileProps {
   borderClass: string;
   mutedText: string;
+  handleNav?: (view: 'experience') => void;
 }
 
-const Profile: React.FC<ProfileProps> = ({ borderClass, mutedText }) => {
+const Profile: React.FC<ProfileProps> = ({ borderClass, mutedText, handleNav }) => {
   return (
     <>
       {/* Profile Image */}
@@ -23,8 +25,17 @@ const Profile: React.FC<ProfileProps> = ({ borderClass, mutedText }) => {
       </div>
       
       {/* Now Building (Latest Role) */}
-      <div className={`p-6 md:p-8 border-b ${borderClass}`}>
+      <div 
+        className={`group p-6 md:p-8 border-b ${borderClass} cursor-pointer transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-900/50`}
+        onClick={() => handleNav && handleNav('experience')}
+      >
         <div className="mb-1">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="font-serif italic text-2xl group-hover:text-purple-500 transition-colors">Experience</h3>
+            <span className="opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-800">
+               <ArrowRight className="w-5 h-5" />
+            </span>
+          </div>
           <h3 className="text-xl font-bold">{EXPERIENCE[0].company}</h3>
           <p className={`text-sm font-serif ${mutedText} mb-4`}>{EXPERIENCE[0].role}</p>
           <p className={`${mutedText} text-sm line-clamp-3`}>

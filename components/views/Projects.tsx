@@ -27,7 +27,7 @@ const Projects: React.FC<ProjectsProps> = ({
         transition={{ duration: 0.4 }}
         className="grow"
     >
-        <div className={`p-6 md:p-12 border-b ${borderClass}`}>
+        <div className={`p-6 md:p-8 md:py-14 border-b ${borderClass}`}>
             <h2 className="font-serif text-3xl md:text-5xl mb-1 leading-tight uppercase">
                 Selected<br/>
                 Works
@@ -49,18 +49,18 @@ const Projects: React.FC<ProjectsProps> = ({
                     className={`group p-6 md:p-8 border-b ${borderClass} ${idx % 2 === 0 ? `md:border-r ${borderClass}` : ''} transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-900/50 flex flex-col cursor-pointer`}
                 >
                      <div className="flex justify-between items-start mb-6">
-                         <h4 className="text-2xl font-bold">{project.title}</h4>
+                         <h4 className="text-3xl font-serif">{project.title}</h4>
                          <span className="opacity-50 group-hover:opacity-100 transition-opacity p-2 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-800">
                              <ArrowUpRight className="w-5 h-5" />
                          </span>
                      </div>
-                     <p className={`${mutedText} mb-8 grow`}>{project.description}</p>
+                     <p className={`${mutedText} text-sm mb-8 grow`}>{project.description}</p>
                      <div className="flex flex-wrap gap-2 mt-auto">
-                         {project.techStack.map((t) => (
-                             <span key={t} className={`text-[10px] uppercase tracking-wider px-2 py-1 border ${isDark ? 'border-neutral-800 bg-neutral-900' : 'border-neutral-200 bg-white'}`}>
-                                 {t}
-                             </span>
-                         ))}
+                         {project.techStack.slice(0, 4).map((t) => (
+              <span key={t} className={`text-[10px] uppercase tracking-wider px-2 py-1 border ${isDark ? 'border-neutral-800 bg-neutral-900' : 'border-neutral-200 bg-white'}`}>
+                {t}
+              </span>
+            ))}
                      </div>
                  </motion.div>
              ))}

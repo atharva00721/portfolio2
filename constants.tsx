@@ -7,7 +7,7 @@ export const PHONE = "+91 7471134354";
 export const SOCIALS: Social[] = [
   { name: "GitHub", link: "https://github.com/atharva00721", label: "@atharva00721" },
   { name: "LinkedIn", link: "https://linkedin.com/in/atharvarajthakur", label: "Atharva Raj Singh Thakur" },
-  { name: "Portfolio", link: "https://arvie.tech", label: "arvie.tech" },
+  { name: "Twitter", link: "https://x.com/codepaglu", label: "@codepaglu" },
   { name: "Email", link: `mailto:${EMAIL}`, label: EMAIL },
 ];
 
@@ -16,7 +16,7 @@ export const EXPERIENCE: Experience[] = [
     company: "Upsurge Labs",
     role: "Jr. Developer",
     date: "Sept. 2025 – Present",
-    location: "Remote/India",
+    location: "Bengaluru/ India",
     description: [
       "Worked on the product's client-side, contributing to features, UI improvements, and codebase stability.",
       "Served as QA for Bhindi and OpenBio, ensuring smooth workflows, regression testing, and bug verification.",
@@ -27,7 +27,7 @@ export const EXPERIENCE: Experience[] = [
     company: "Play-In Trampoline Park",
     role: "Freelance Web Developer",
     date: "Jan. 2024 – Feb. 2024",
-    location: "Indore, India",
+    location: "Indore/ India",
     description: [
       "Engineered and launched a responsive business website using WordPress.",
       "Customized themes and integrated plugins to support booking, location services, and event listings.",
