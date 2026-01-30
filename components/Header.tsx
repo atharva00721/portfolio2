@@ -95,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({
 
         {/* Cell 3: Time Info */}
         <div className={`col-span-1 p-4 md:p-6 text-xs font-mono uppercase tracking-widest ${mutedText} border-r lg:border-b-0 ${borderClass} flex items-center justify-between`}>
-          <span>BANGALORE, IN</span>
+ç          <span>BANGALORE, IN</span>
           <span>{time.toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour12: false })}</span>
         </div>
 
