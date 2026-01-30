@@ -15,8 +15,8 @@ export const EXPERIENCE: Experience[] = [
   {
     company: "Upsurge Labs",
     role: "Jr. Developer",
-    date: "Sept. 2025 – Present",
-    location: "Bengaluru/ India",
+    date: "Sept. 2025 – Jan. 2026",
+    location: "Bangalore/ India",
     description: [
       "Worked on the product's client-side, contributing to features, UI improvements, and codebase stability.",
       "Served as QA for Bhindi and OpenBio, ensuring smooth workflows, regression testing, and bug verification.",

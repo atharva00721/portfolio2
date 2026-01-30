@@ -20,7 +20,12 @@ const Intro: React.FC<IntroProps> = ({ borderClass, mutedText, isDark }) => {
         digital experiences that feel as timeless as print.
       </p>
       <div className="flex gap-4">
-        <a href="#contact" className={`px-6 py-3 text-sm font-bold uppercase tracking-wider bg-neutral-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-opacity`}>
+        <a 
+          href="https://drive.google.com/file/d/1ZerfeEQeWFcvazwPAa0Eo2TAiEC3KOaX/view?usp=drive_link" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className={`px-6 py-3 text-sm font-bold uppercase tracking-wider bg-neutral-900 text-white dark:bg-white dark:text-black hover:opacity-90 transition-opacity`}
+        >
           Read Resume
         </a>
         <button 

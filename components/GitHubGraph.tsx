@@ -7,9 +7,14 @@ const GitHubGraph: React.FC = () => {
 
   useEffect(() => {
     fetch('/api/github')
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch");
+        return res.json();
+      })
       .then((data) => {
-        setCalendar(data);
+        if (data?.weeks) {
+          setCalendar(data);
+        }
         setLoading(false);
       })
       .catch((err) => {

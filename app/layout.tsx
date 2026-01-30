@@ -17,6 +17,20 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "Atharva Raj | Portfolio",
   description: "Full Stack Developer & UI Designer",
+  icons: {
+    icon: [
+      { url: '/favicon_io/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon_io/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon_io/favicon.ico' }
+    ],
+    apple: [
+      { url: '/favicon_io/apple-touch-icon.png' }
+    ],
+    other: [
+      { rel: 'android-chrome', url: '/favicon_io/android-chrome-192x192.png', sizes: '192x192' },
+      { rel: 'android-chrome', url: '/favicon_io/android-chrome-512x512.png', sizes: '512x512' }
+    ]
+  }
 };
 
 export default function RootLayout({

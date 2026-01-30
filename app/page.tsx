@@ -15,17 +15,13 @@ import { useTheme } from "next-themes";
 
 import Experience from "../components/views/Experience";
 
-import Experiments from "../components/views/Experiments";
-import ExperimentDetail from "../components/views/ExperimentDetail";
-import { PlaygroundItem } from "../types";
 
 export default function Page() {
-  const [view, setView] = useState<"home" | "projects" | "project-detail" | "blog" | "blog-detail" | "experience" | "experiments" | "experiment-detail">("home");
+  const [view, setView] = useState<"home" | "projects" | "project-detail" | "blog" | "blog-detail" | "experience">("home");
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [activeBlog, setActiveBlog] = useState<BlogPost | null>(null);
-  const [activeExperiment, setActiveExperiment] = useState<PlaygroundItem | null>(null);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -34,7 +30,7 @@ export default function Page() {
 
   const isDark = mounted && resolvedTheme === "dark";
 
-  const handleNav = (target: "home" | "projects" | "blog" | "experience" | "experiments") => {
+  const handleNav = (target: "home" | "projects" | "blog" | "experience") => {
     setView(target);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -51,11 +47,6 @@ export default function Page() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleExperimentClick = (experiment: PlaygroundItem) => {
-    setActiveExperiment(experiment);
-    setView("experiment-detail");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   const borderClass = isDark ? "border-neutral-800" : "border-neutral-200";
   const mutedText = isDark ? "text-neutral-400" : "text-neutral-500";
@@ -63,7 +54,7 @@ export default function Page() {
   return (
     <div className={`min-h-screen transition-colors duration-300 max-w-4xl mx-auto border-x ${isDark ? "bg-black text-white" : "bg-white text-black"}`}>
       <Header
-        view={view === 'experiment-detail' ? 'experiments' : view}
+        view={view}
         handleNav={handleNav}
         borderClass={borderClass}
         mutedText={mutedText}
@@ -125,26 +116,6 @@ export default function Page() {
             isDark={isDark}
             handleBack={() => handleNav("blog")}
           />
-        )}
-        {view === "experiments" && (
-            <Experiments 
-                key="experiments" 
-                handleNav={handleNav} 
-                handleExperimentClick={handleExperimentClick}
-                borderClass={borderClass}
-                mutedText={mutedText}
-                isDark={isDark}
-            />
-        )}
-        {view === "experiment-detail" && activeExperiment && (
-            <ExperimentDetail 
-                key="experiment-detail"
-                experiment={activeExperiment}
-                handleBack={() => handleNav("experiments")}
-                borderClass={borderClass}
-                mutedText={mutedText}
-                isDark={isDark}
-            />
         )}
       </AnimatePresence>
 

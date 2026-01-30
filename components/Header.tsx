@@ -4,8 +4,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 
 interface HeaderProps {
-  view: 'home' | 'projects' | 'project-detail' | 'blog' | 'blog-detail' | 'experience' | 'experiments';
-  handleNav: (target: 'home' | 'projects' | 'blog' | 'experience' | 'experiments') => void;
+  view: 'home' | 'projects' | 'project-detail' | 'blog' | 'blog-detail' | 'experience';
+  handleNav: (target: 'home' | 'projects' | 'blog' | 'experience') => void;
   borderClass: string;
   mutedText: string;
 }
@@ -58,12 +58,6 @@ const Header: React.FC<HeaderProps> = ({
                                className={`absolute top-full left-0 w-[200%] md:w-full z-50 border-x border-b ${borderClass} bg-background`}
                            >
                                <button 
-                                   onClick={(e) => { e.stopPropagation(); handleNav('blog'); setMenuOpen(false); }}
-                                   className={`w-full text-left p-4 hover:bg-neutral-100 dark:hover:bg-neutral-900 border-b ${borderClass}`}
-                               >
-                                   INDEX
-                               </button>
-                               <button 
                                    onClick={(e) => { e.stopPropagation(); handleNav('projects'); setMenuOpen(false); }}
                                    className={`w-full text-left p-4 hover:bg-neutral-100 dark:hover:bg-neutral-900 border-b ${borderClass}`}
                                >
@@ -71,15 +65,9 @@ const Header: React.FC<HeaderProps> = ({
                                </button>
                                <button 
                                    onClick={(e) => { e.stopPropagation(); handleNav('experience'); setMenuOpen(false); }}
-                                   className={`w-full text-left p-4 hover:bg-neutral-100 dark:hover:bg-neutral-900 border-b ${borderClass}`}
-                               >
-                                   EXPERIENCE
-                               </button>
-                               <button 
-                                   onClick={(e) => { e.stopPropagation(); handleNav('experiments'); setMenuOpen(false); }}
                                    className={`w-full text-left p-4 hover:bg-neutral-100 dark:hover:bg-neutral-900`}
                                >
-                                   EXPERIMENTS
+                                   EXPERIENCE
                                </button>
                            </motion.div>
                        )}
@@ -107,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({
 
         {/* Cell 3: Time Info */}
         <div className={`col-span-1 p-4 md:p-6 text-xs font-mono uppercase tracking-widest ${mutedText} border-r lg:border-b-0 ${borderClass} flex items-center justify-between`}>
-          <span>INDORE, IN</span>
+          <span>BANGALORE, IN</span>
           <span>{time.toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour12: false })}</span>
         </div>
 

@@ -22,6 +22,8 @@ interface ContributionGraphProps {
 }
 
 export default function ContributionGraph({ calendar }: ContributionGraphProps) {
+  const weeks = calendar?.weeks ?? [];
+  const totalContributions = calendar?.totalContributions ?? 0;
 
   const getIntensity = (count: number) => {
     if (count === 0) return 0;
@@ -42,7 +44,7 @@ export default function ContributionGraph({ calendar }: ContributionGraphProps) 
   return (
     <div className="w-full ">
       <div className="flex gap-1 justify-end min-w-max">
-        {calendar.weeks.slice(-32).map((week, wIndex) => (
+        {weeks.slice(-32).map((week, wIndex) => (
           <div key={wIndex} className={`flex flex-col gap-1 ${wIndex < 7 ? 'hidden md:flex' : ''}`}>
             {week.contributionDays.map((day) => (
               <motion.div
