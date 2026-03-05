@@ -50,6 +50,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        <script async src="https://www.mimick.me/agent.js?agentId=fb86253e-f79e-4c6c-abc1-fc7019929e15"></script>
       </body>
     </html>
   );
