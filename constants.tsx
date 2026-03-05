@@ -38,6 +38,103 @@ export const EXPERIENCE: Experience[] = [
 
 export const PROJECTS: Project[] = [
   {
+    slug: "mimick-me",
+    title: "Mimick-Me",
+    description: "An AI-powered client operating system for freelancers and agencies, featuring automated lead capture, intelligent portfolio generation, and smart scheduling integrations.",
+    longDescription: "Mimick-Me serves as a comprehensive toolset designed to radically streamline operations for creative professionals and agencies. It acts as an intelligent intermediary between you and your potential clients. The platform features an interactive AI onboarding agent to perfectly configure your workspace, dynamic portfolio generation that crafts custom proposals on-the-fly via a credit-based system, and robust end-to-end lead management. When new inquiries arrive, Mimick-Me captures detailed project requirements, integrates with Calendly for frictionless scheduling, and employs background agents to secretly enrich lead profiles with valuable context—empowering you to close deals faster with zero manual research.",
+    techStack: [
+      "Next.js App Router",
+      "React",
+      "TypeScript",
+      "Vercel AI SDK 3.0",
+      "Tailwind CSS",
+      "TanStack React Query",
+      "PostgreSQL",
+      "Upstash / QStash (Webhooks)",
+      "Calendly API"
+    ],
+    imageUrl: "/mimick-me/dashboard.png",
+    videoUrl: "/mimick-me/Screen Recording 2026-03-05 at 2.58.25 PM.mov",
+    screenshots: [
+      { url: "/mimick-me/leads.png", alt: "Intelligent Lead Management" },
+      { url: "/mimick-me/AI-Agent.png", alt: "AI Onboarding Agent" },
+      { url: "/mimick-me/portfolio center.png", alt: "Dynamic Portfolio Center" },
+      { url: "/mimick-me/analytics.png", alt: "Performance Analytics" },
+      { url: "/mimick-me/custom-sub-domain.png", alt: "Custom Sub-domain Configuration" },
+    ],
+    demoUrl: "https://www.mimick.me/",
+    codeUrl: "https://github.com/atharva00721/Mimick-Me",
+    featured: true,
+    category: "Full Stack AI Application",
+    ctaText: "View Dashboard Demo",
+    ctaLink: "https://www.mimick.me/",
+    features: [
+      "Dynamic Portfolio Generation: Create tailored, multi-section portfolio sites on the fly using an AI-driven, dynamic credit consumption system.",
+      "Intelligent Lead Management: Automatically extracts structured project requirements, budgets, and meeting availability from initial client inquiries.",
+      "Automated Scheduling & Webhooks: Deep Calendly integration seamlessly books meetings and triggers secure background QStash workflows.",
+      "AI Onboarding Assistant: A conversational agent that guides new users through setting up their custom workspace and API integrations.",
+      "Background Lead Enrichment ('The Spy'): Automatically researches new leads via webhooks, gathering company size and recent news to provide critical insights before you even reply."
+    ],
+    futureGoals: [
+      "Integrate seamless CRM syncing (Salesforce, HubSpot) for enriched leads.",
+      "Expand 'The Spy' agent to automatically draft personalized email responses.",
+      "Implement real-time collaboration features on generated portfolio drafts."
+    ],
+    documentation: {
+      setup: "Clone the repository, install dependencies with `bun install`. Required environment variables for database, Upstash, Calendly and API keys must be set in `.env.local`. Run with `bun dev`.",
+      usage: "Access the dashboard to configure your AI agent integrations and webhook settings. Lead captures on the public-facing site automatically trigger background enrichment workflows and scheduling logic."
+    },
+    highlights: [
+      "Architected background webhook system preventing long-running AI tasks from blocking the UI thread.",
+      "Successfully migrated to and resolved complex type issues in Vercel AI SDK 3.0 (CoreMessage to ModelMessage).",
+      "Built a scalable credit consumption logic based on active JSON payload generation for dynamic portfolio sections."
+    ],
+    challenges: [
+      "Managing strict module boundaries and avoiding client-bundle bloat when mixing Server Actions with complex AI generation logic.",
+      "Ensuring TanStack Query context providers wrap deep client components efficiently without compromising Server Component benefits.",
+      "Handling unreliable third-party API response times during webhook-triggered lead enrichment without degrading the user experience."
+    ],
+    metrics: {
+      performance: {
+        loadTime: "Fast (App Router optimized)",
+        lighthouse: {
+          performance: 92,
+          accessibility: 98,
+          seo: 100,
+          bestPractices: 95
+        },
+        apiResponse: "Sub-200ms for standard mutations"
+      },
+      development: {
+        timeToComplete: "Continuous Development",
+        commitCount: 342,
+        testsWritten: 85,
+        testCoverage: "78%",
+        bugsFixed: 47,
+        featuresDelivered: 15
+      },
+      learning: {
+        newTechnologies: [
+          "Vercel AI SDK 3.0",
+          "TanStack React Query",
+          "Next.js App Router (Server Actions)",
+          "QStash / Background Webhooks",
+          "Calendly Webhook API"
+        ],
+        technicalChallenges: [
+          "Managing Next.js Server & Client component boundaries securely",
+          "Handling breaking type changes in external AI libraries",
+          "Implementing reliable background webhook processing without timing out"
+        ],
+        timeInvested: {
+          research: "45h",
+          implementation: "180h",
+          testing: "60h"
+        }
+      }
+    }
+  },
+  {
     slug: "presently",
     title: "PresentLy",
     description:
@@ -665,81 +762,81 @@ export const EDUCATION = {
 };
 
 export const BLOG_POSTS: BlogPost[] = [
-    {
-        id: '1',
-        title: "The Art of Minimalism in Code",
-        slug: "art-of-minimalism",
-        date: "Nov 15, 2024",
-        readTime: "5 min",
-        tags: ["Design", "Philosophy"],
-        excerpt: "Why less is often more when it comes to sustainable software architecture.",
-        content: (
-            <>
-                <p>
-                    In an era where frameworks bloat and dependencies spiral, the act of writing minimal, clean code has become a form of rebellion. It is not just about reducing file size; it is about reducing cognitive load. When we strip away the superfluous, we are left with logic that speaks for itself.
-                </p>
-                <p>
-                    Consider the function that does one thing well. It is testable, readable, and reusable. Contrast this with the &apos;God Object&apos; that knows too much and does too much. The latter is a liability, a debt we pay with every future refactor.
-                </p>
-                <p>
-                    Minimalism in design parallels this. A user interface cluttered with options paralyzes the user. A layout that breathes, with ample whitespace and clear typography, guides them. As developers, we are also designers of systems. We must curate the experience for the end-user and the developer who comes after us.
-                </p>
-                <p>
-                    True elegance is found in the solution that looks obvious in retrospect. It is the result of iterating past the complex to find the simple. As Da Vinci said, &quot;Simplicity is the ultimate sophistication.&quot; In code, this means favoring composition over inheritance, pure functions over side effects, and clarity over cleverness.
-                </p>
-            </>
-        )
-    },
-    {
-        id: '2',
-        title: "Embracing the Chaos of GenAI",
-        slug: "embracing-genai",
-        date: "Oct 28, 2024",
-        readTime: "4 min",
-        tags: ["AI", "Future"],
-        excerpt: "Navigating the unpredictable waters of LLMs and what it means for traditional engineering.",
-        content: (
-            <>
-                <p>
-                    Generative AI has introduced a probabilistic element to a field that was once strictly deterministic. Software engineering used to be about defined inputs and expected outputs. Now, we wrestle with prompts, temperature settings, and hallucinations.
-                </p>
-                <p>
-                    This shift is terrifying for some, but exhilarating for others. It demands a new skillset: the intuition to guide a model, the skepticism to verify its output, and the creativity to combine these stochastic engines with rigid business logic.
-                </p>
-                <p>
-                    We are no longer just coding logic; we are orchestrating intelligence. The role of the developer is shifting from &apos;builder&apos; to &apos;conductor&apos;. We define the constraints, set the tempo, and let the models generate the melody. But we must remain the critics. We must ensure the result is not just syntactically correct, but semantically meaningful and ethically sound.
-                </p>
-                <p>
-                    The chaos is where the opportunity lies. Those who can tame the unpredictability of these models and harness them for reliable workflows will define the next decade of software.
-                </p>
-            </>
-        )
-    },
-    {
-        id: '3',
-        title: "The Return of Serifs",
-        slug: "return-of-serifs",
-        date: "Sep 12, 2024",
-        readTime: "3 min",
-        tags: ["Typography", "Design"],
-        excerpt: "Digital design is finally looking back to print for inspiration, and it's beautiful.",
-        content: (
-            <>
-                <p>
-                    For too long, the web was dominated by the utilitarian cleanliness of sans-serif typefaces. Inter, Roboto, San Francisco—they are functional, legible, and safe. But they lack soul. They lack the ink-bleed warmth of a printed page.
-                </p>
-                <p>
-                    We are witnessing a renaissance of editorial design on the web. Designers are rediscovering the authority and elegance of serifs. Fonts like Instrument Serif, Playfair Display, and Merriweather are taking center stage, not just for body copy, but for bold, declarative headlines.
-                </p>
-                <p>
-                    This trend signals a maturity in digital media. We are no longer trying to look like &apos;tech&apos;. We are trying to look like &apos;culture&apos;. We are borrowing from centuries of print tradition—grids, drop caps, justified text—and applying them to the fluid canvas of the browser.
-                </p>
-                <p>
-                    It is a welcome shift. It makes reading on a screen feel less like scanning a terminal and more like absorbing a story. It brings a human touch back to the pixel-perfect precision of our screens.
-                </p>
-            </>
-        )
-    }
+  {
+    id: '1',
+    title: "The Art of Minimalism in Code",
+    slug: "art-of-minimalism",
+    date: "Nov 15, 2024",
+    readTime: "5 min",
+    tags: ["Design", "Philosophy"],
+    excerpt: "Why less is often more when it comes to sustainable software architecture.",
+    content: (
+      <>
+        <p>
+          In an era where frameworks bloat and dependencies spiral, the act of writing minimal, clean code has become a form of rebellion. It is not just about reducing file size; it is about reducing cognitive load. When we strip away the superfluous, we are left with logic that speaks for itself.
+        </p>
+        <p>
+          Consider the function that does one thing well. It is testable, readable, and reusable. Contrast this with the &apos;God Object&apos; that knows too much and does too much. The latter is a liability, a debt we pay with every future refactor.
+        </p>
+        <p>
+          Minimalism in design parallels this. A user interface cluttered with options paralyzes the user. A layout that breathes, with ample whitespace and clear typography, guides them. As developers, we are also designers of systems. We must curate the experience for the end-user and the developer who comes after us.
+        </p>
+        <p>
+          True elegance is found in the solution that looks obvious in retrospect. It is the result of iterating past the complex to find the simple. As Da Vinci said, &quot;Simplicity is the ultimate sophistication.&quot; In code, this means favoring composition over inheritance, pure functions over side effects, and clarity over cleverness.
+        </p>
+      </>
+    )
+  },
+  {
+    id: '2',
+    title: "Embracing the Chaos of GenAI",
+    slug: "embracing-genai",
+    date: "Oct 28, 2024",
+    readTime: "4 min",
+    tags: ["AI", "Future"],
+    excerpt: "Navigating the unpredictable waters of LLMs and what it means for traditional engineering.",
+    content: (
+      <>
+        <p>
+          Generative AI has introduced a probabilistic element to a field that was once strictly deterministic. Software engineering used to be about defined inputs and expected outputs. Now, we wrestle with prompts, temperature settings, and hallucinations.
+        </p>
+        <p>
+          This shift is terrifying for some, but exhilarating for others. It demands a new skillset: the intuition to guide a model, the skepticism to verify its output, and the creativity to combine these stochastic engines with rigid business logic.
+        </p>
+        <p>
+          We are no longer just coding logic; we are orchestrating intelligence. The role of the developer is shifting from &apos;builder&apos; to &apos;conductor&apos;. We define the constraints, set the tempo, and let the models generate the melody. But we must remain the critics. We must ensure the result is not just syntactically correct, but semantically meaningful and ethically sound.
+        </p>
+        <p>
+          The chaos is where the opportunity lies. Those who can tame the unpredictability of these models and harness them for reliable workflows will define the next decade of software.
+        </p>
+      </>
+    )
+  },
+  {
+    id: '3',
+    title: "The Return of Serifs",
+    slug: "return-of-serifs",
+    date: "Sep 12, 2024",
+    readTime: "3 min",
+    tags: ["Typography", "Design"],
+    excerpt: "Digital design is finally looking back to print for inspiration, and it's beautiful.",
+    content: (
+      <>
+        <p>
+          For too long, the web was dominated by the utilitarian cleanliness of sans-serif typefaces. Inter, Roboto, San Francisco—they are functional, legible, and safe. But they lack soul. They lack the ink-bleed warmth of a printed page.
+        </p>
+        <p>
+          We are witnessing a renaissance of editorial design on the web. Designers are rediscovering the authority and elegance of serifs. Fonts like Instrument Serif, Playfair Display, and Merriweather are taking center stage, not just for body copy, but for bold, declarative headlines.
+        </p>
+        <p>
+          This trend signals a maturity in digital media. We are no longer trying to look like &apos;tech&apos;. We are trying to look like &apos;culture&apos;. We are borrowing from centuries of print tradition—grids, drop caps, justified text—and applying them to the fluid canvas of the browser.
+        </p>
+        <p>
+          It is a welcome shift. It makes reading on a screen feel less like scanning a terminal and more like absorbing a story. It brings a human touch back to the pixel-perfect precision of our screens.
+        </p>
+      </>
+    )
+  }
 ];
 
 export const PLAYGROUND_ITEMS: PlaygroundItem[] = [

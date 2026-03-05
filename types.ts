@@ -17,6 +17,7 @@ export interface Project {
   featured: boolean;
   category: string;
   imageUrl?: string;
+  videoUrl?: string;
   screenshots?: { url: string; alt: string }[];
   demoUrl?: string;
   codeUrl?: string;
@@ -41,6 +42,8 @@ export interface Project {
       commitCount?: number | string;
       bugsFixed?: number;
       featuresDelivered?: number;
+      testsWritten?: number;
+      testCoverage?: string;
     };
     learning?: {
       newTechnologies?: string[];
@@ -48,6 +51,7 @@ export interface Project {
       timeInvested?: {
         research?: string;
         implementation?: string;
+        testing?: string;
       };
     };
   };

@@ -26,6 +26,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
   // Combine main image and screenshots into a single media array
   const mediaItems = React.useMemo(() => {
     const items = [];
+    if (project.videoUrl) {
+      items.push({ type: 'video', url: project.videoUrl, alt: project.title });
+    }
     if (project.imageUrl) {
       items.push({ type: 'main', url: project.imageUrl, alt: project.title });
     }
@@ -34,7 +37,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
         items.push({ ...s, type: 'screenshot' });
       });
     }
-    return items as { type: 'main' | 'screenshot'; url: string; alt: string }[];
+    return items as { type: 'main' | 'screenshot' | 'video'; url: string; alt: string }[];
   }, [project]);
 
   const nextSlide = useCallback((e?: React.MouseEvent) => {
@@ -73,12 +76,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
       >
         {/* Sticky Back Navigation */}
         <div className={`flex justify-between items-center p-4 border-b ${borderClass} bg-neutral-100/50 dark:bg-neutral-900/50 backdrop-blur-sm sticky top-0 z-30`}>
-            <button 
-                onClick={handleNav}
-                className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:text-purple-500 transition-colors"
-            >
-                <ChevronLeft size={14} /> Back to Projects
-            </button>
+          <button
+            onClick={handleNav}
+            className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:text-purple-500 transition-colors"
+          >
+            <ChevronLeft size={14} /> Back to Projects
+          </button>
         </div>
 
         {/* Project Header */}
@@ -117,19 +120,19 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
               <div className="relative aspect-video w-full rounded-sm overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center text-neutral-400 group">
                 {mediaItems.length > 0 ? (
                   <>
-                    <div 
+                    <div
                       className="w-full h-full cursor-pointer"
                       onClick={() => setShowModal(true)}
                     >
                       <CurrentMedia item={mediaItems[currentSlide]} className="object-cover" autoPlay={true} showModal={false} />
-                      
+
                       {/* Video Indicator Overlay */}
                       {isVideo(mediaItems[currentSlide].url) && !showModal && (
-                         <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors pointer-events-none">
-                            <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
-                                <Play className="w-8 h-8 text-white fill-white" />
-                            </div>
-                         </div>
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors pointer-events-none">
+                          <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+                            <Play className="w-8 h-8 text-white fill-white" />
+                          </div>
+                        </div>
                       )}
                     </div>
 
@@ -148,7 +151,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                         >
                           <ChevronRight size={20} />
                         </button>
-                        
+
                         {/* Dots */}
                         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                           {mediaItems.map((_, idx) => (
@@ -158,11 +161,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                                 e.stopPropagation();
                                 setCurrentSlide(idx);
                               }}
-                              className={`w-2 h-2 rounded-full transition-all ${
-                                currentSlide === idx 
-                                  ? 'bg-white w-4' 
-                                  : 'bg-white/50 hover:bg-white/80'
-                              }`}
+                              className={`w-2 h-2 rounded-full transition-all ${currentSlide === idx
+                                ? 'bg-white w-4'
+                                : 'bg-white/50 hover:bg-white/80'
+                                }`}
                             />
                           ))}
                         </div>
@@ -310,36 +312,36 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
               <X size={32} />
             </button>
 
-            <div 
-                className="relative w-full h-full max-w-7xl max-h-[90vh] flex items-center justify-center"
-                onClick={e => e.stopPropagation()}
+            <div
+              className="relative w-full h-full max-w-7xl max-h-[90vh] flex items-center justify-center"
+              onClick={e => e.stopPropagation()}
             >
-                {mediaItems.length > 0 && (
-                    <CurrentMedia item={mediaItems[currentSlide]} className="object-contain" autoPlay={true} showModal={true} />
-                )}
+              {mediaItems.length > 0 && (
+                <CurrentMedia item={mediaItems[currentSlide]} className="object-contain" autoPlay={true} showModal={true} />
+              )}
 
-                {/* Modal Navigation */}
-                {mediaItems.length > 1 && (
-                    <>
-                        <button
-                            onClick={prevSlide}
-                            className="absolute left-0 md:-left-12 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors"
-                        >
-                            <ChevronLeft size={48} />
-                        </button>
-                        <button
-                            onClick={nextSlide}
-                            className="absolute right-0 md:-right-12 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors"
-                        >
-                            <ChevronRight size={48} />
-                        </button>
-                    </>
-                )}
-                
-                {/* Modal Counter */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 font-mono text-sm">
-                    {currentSlide + 1} / {mediaItems.length}
-                </div>
+              {/* Modal Navigation */}
+              {mediaItems.length > 1 && (
+                <>
+                  <button
+                    onClick={prevSlide}
+                    className="absolute left-0 md:-left-12 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors"
+                  >
+                    <ChevronLeft size={48} />
+                  </button>
+                  <button
+                    onClick={nextSlide}
+                    className="absolute right-0 md:-right-12 top-1/2 -translate-y-1/2 p-2 text-white/70 hover:text-white transition-colors"
+                  >
+                    <ChevronRight size={48} />
+                  </button>
+                </>
+              )}
+
+              {/* Modal Counter */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 font-mono text-sm">
+                {currentSlide + 1} / {mediaItems.length}
+              </div>
             </div>
           </motion.div>
         )}
