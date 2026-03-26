@@ -33,7 +33,7 @@ const ExperimentDetail: React.FC<ExperimentDetailProps> = ({
             className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest hover:underline decoration-wavy underline-offset-4"
         >
             <ArrowLeft size={14} />
-            Back to Lab
+            Back to Garden
         </button>
         <span className={`font-mono text-xs uppercase tracking-widest ${mutedText}`}>
             Exp. No. {experiment.id}
@@ -90,7 +90,7 @@ const ExperimentDetail: React.FC<ExperimentDetailProps> = ({
                   rel="noopener noreferrer"
                   className={`mt-12 inline-flex items-center gap-2 px-6 py-3 border ${borderClass} font-bold uppercase tracking-wider hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors`}
               >
-                  Launch Experiment <ArrowUpRight size={18} />
+                  Launch Garden Item <ArrowUpRight size={18} />
               </a>
           </div>
       </div>

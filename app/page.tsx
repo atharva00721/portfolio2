@@ -8,20 +8,23 @@ import Projects from "../components/views/Projects";
 import ProjectDetail from "../components/views/ProjectDetail";
 import BlogList from "../components/views/BlogList";
 import BlogDetail from "../components/views/BlogDetail";
-import { Project, BlogPost } from "../types";
+import { Project, BlogPost, PlaygroundItem } from "../types";
 import { AnimatePresence } from "framer-motion";
 
 import { useTheme } from "next-themes";
 
 import Experience from "../components/views/Experience";
+import Garden from "../components/views/Garden";
+import ExperimentDetail from "../components/views/ExperimentDetail";
 
 
 export default function Page() {
-  const [view, setView] = useState<"home" | "projects" | "project-detail" | "blog" | "blog-detail" | "experience">("home");
+  const [view, setView] = useState<"home" | "projects" | "project-detail" | "blog" | "blog-detail" | "experience" | "garden" | "garden-detail">("home");
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [activeBlog, setActiveBlog] = useState<BlogPost | null>(null);
+  const [activeExperiment, setActiveExperiment] = useState<PlaygroundItem | null>(null);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -30,7 +33,7 @@ export default function Page() {
 
   const isDark = mounted && resolvedTheme === "dark";
 
-  const handleNav = (target: "home" | "projects" | "blog" | "experience") => {
+  const handleNav = (target: "home" | "projects" | "blog" | "experience" | "garden") => {
     setView(target);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -44,6 +47,12 @@ export default function Page() {
   const handleBlogClick = (blog: BlogPost) => {
     setActiveBlog(blog);
     setView("blog-detail");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleExperimentClick = (experiment: PlaygroundItem) => {
+    setActiveExperiment(experiment);
+    setView("garden-detail");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -89,6 +98,16 @@ export default function Page() {
             handleNav={handleNav}
           />
         )}
+        {view === "garden" && (
+          <Garden
+            key="garden"
+            borderClass={borderClass}
+            mutedText={mutedText}
+            isDark={isDark}
+            handleExperimentClick={handleExperimentClick}
+            handleNav={handleNav}
+          />
+        )}
         {view === "project-detail" && activeProject && (
           <ProjectDetail
             key={activeProject.slug}
@@ -115,6 +134,16 @@ export default function Page() {
             mutedText={mutedText}
             isDark={isDark}
             handleBack={() => handleNav("blog")}
+          />
+        )}
+        {view === "garden-detail" && activeExperiment && (
+          <ExperimentDetail
+            key={`garden-${activeExperiment.id}`}
+            experiment={activeExperiment}
+            borderClass={borderClass}
+            mutedText={mutedText}
+            isDark={isDark}
+            handleBack={() => handleNav("garden")}
           />
         )}
       </AnimatePresence>
