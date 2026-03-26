@@ -39,10 +39,10 @@ const Experiments: React.FC<PlaygroundProps> = ({
                 <span>{new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
             </div> */}
             <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl tracking-tighter uppercase leading-none">
-                Experiments
+                Garden
             </h1>
             <div className={`flex justify-center items-center gap-4 mt-4 text-xs font-mono uppercase tracking-widest ${mutedText}`}>
-                <span>Experimental</span>
+                <span>Curated</span>
                 <Star size={10} className="fill-current" />
                 <span>Creative</span>
                 <Star size={10} className="fill-current" />
@@ -91,7 +91,7 @@ const Experiments: React.FC<PlaygroundProps> = ({
                             onClick={() => handleExperimentClick(coverStory)}
                             className="flex items-center gap-2 font-bold uppercase tracking-wider hover:text-red-500 transition-colors w-fit"
                         >
-                            Read More <ArrowUpRight size={16} />
+                            Open in Garden <ArrowUpRight size={16} />
                         </button>
                     </div>
                 </div>

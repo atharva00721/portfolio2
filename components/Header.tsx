@@ -4,8 +4,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 
 interface HeaderProps {
-  view: 'home' | 'projects' | 'project-detail' | 'blog' | 'blog-detail' | 'experience';
-  handleNav: (target: 'home' | 'projects' | 'blog' | 'experience') => void;
+  view: 'home' | 'projects' | 'project-detail' | 'blog' | 'blog-detail' | 'experience' | 'garden' | 'garden-detail';
+  handleNav: (target: 'home' | 'projects' | 'blog' | 'experience' | 'garden') => void;
   borderClass: string;
   mutedText: string;
 }
@@ -62,6 +62,12 @@ const Header: React.FC<HeaderProps> = ({
                                    className={`w-full text-left p-4 hover:bg-neutral-100 dark:hover:bg-neutral-900 border-b ${borderClass}`}
                                >
                                    PROJECTS
+                               </button>
+                               <button 
+                                   onClick={(e) => { e.stopPropagation(); handleNav('garden'); setMenuOpen(false); }}
+                                   className={`w-full text-left p-4 hover:bg-neutral-100 dark:hover:bg-neutral-900 border-b ${borderClass}`}
+                               >
+                                   GARDEN
                                </button>
                                <button 
                                    onClick={(e) => { e.stopPropagation(); handleNav('experience'); setMenuOpen(false); }}
