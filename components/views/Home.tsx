@@ -60,9 +60,9 @@ const Home: React.FC<HomeProps> = ({
 
                 {/* GitHub Section */}
                 <div className={`p-6 md:p-8 border-b ${borderClass}`}>
-                    <div className="flex justify-between items-center mb-6">
-                        <h3 className="font-serif italic text-2xl mb-4">GitHub Contributions</h3>
-                        <span className={`text-xs ${mutedText}`}>Last Year</span>
+                    <div className="mb-6 flex items-baseline justify-between gap-4">
+                        <h3 className="font-serif italic text-2xl">GitHub Contributions</h3>
+                        <span className={`text-xs italic ${mutedText}`}>Last Year</span>
                     </div>
                     <GitHubGraph />
                 </div>

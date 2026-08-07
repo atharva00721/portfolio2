@@ -1,40 +1,53 @@
-import React, { useEffect, useState } from 'react';
-import ContributionGraph, { ContributionCalendar } from './ContributionGraph';
+"use client";
+
+import React, { useEffect, useState } from "react";
+import GitHubActivity, { type Contribution } from "./GitHubActivity";
+
+type GitHubPayload = {
+  total: number;
+  contributions: Contribution[];
+};
 
 const GitHubGraph: React.FC = () => {
-  const [calendar, setCalendar] = useState<ContributionCalendar | null>(null);
+  const [data, setData] = useState<GitHubPayload | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch('/api/github')
+    fetch("/api/github")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch");
         return res.json();
       })
-      .then((data) => {
-        if (data?.weeks) {
-          setCalendar(data);
+      .then((payload: GitHubPayload) => {
+        if (payload?.contributions?.length) {
+          setData(payload);
+        } else {
+          setError(true);
         }
-        setLoading(false);
       })
-      .catch((err) => {
-        console.error("Failed to load GitHub data", err);
-        setLoading(false);
-      });
+      .catch(() => setError(true))
+      .finally(() => setLoading(false));
   }, []);
 
   if (loading) {
-    return <div className="animate-pulse h-32 bg-neutral-100 dark:bg-neutral-900 rounded-lg w-full"></div>;
+    return (
+      <div className="h-32 w-full animate-pulse rounded-sm bg-neutral-100 dark:bg-neutral-900" />
+    );
   }
 
-  if (!calendar) {
-    return <div className="text-sm text-neutral-500">Failed to load GitHub data.</div>;
+  if (error || !data) {
+    return (
+      <div className="text-sm text-neutral-500">Failed to load GitHub data.</div>
+    );
   }
 
   return (
-    <div className="w-full overflow-x-auto pb-2">
-      <ContributionGraph calendar={calendar} />
-    </div>
+    <GitHubActivity
+      contributions={data.contributions}
+      total={data.total}
+      showMonths
+    />
   );
 };
 
